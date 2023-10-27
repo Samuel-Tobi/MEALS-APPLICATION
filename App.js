@@ -9,6 +9,7 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import MealDescriptionScreen from "./screens/MealDescriptionScreen";
 import MealsDetailsScreen from "./screens/MealsDetailsScreen";
+import FavoritesContextProvider from "./store/context/favourites-contex";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -52,28 +53,30 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: { backgroundColor: "#005A04" },
-            headerTintColor: "white",
-            cardStyle: { backgroundColor: "#CCFFBB" },
-          }}
-        >
-          <Stack.Screen
-            name="MealsCategories"
-            component={DrawerNavigator}
-            // component={CategoriesScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="MealDetails" component={MealsDetailsScreen} />
-          <Stack.Screen
-            name="MealDescription"
-            component={MealDescriptionScreen}
-            options={{ title: "About the Meal" }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <FavoritesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: "#005A04" },
+              headerTintColor: "white",
+              cardStyle: { backgroundColor: "#CCFFBB" },
+            }}
+          >
+            <Stack.Screen
+              name="MealsCategories"
+              component={DrawerNavigator}
+              // component={CategoriesScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="MealDetails" component={MealsDetailsScreen} />
+            <Stack.Screen
+              name="MealDescription"
+              component={MealDescriptionScreen}
+              options={{ title: "About the Meal" }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </FavoritesContextProvider>
     </>
   );
 }

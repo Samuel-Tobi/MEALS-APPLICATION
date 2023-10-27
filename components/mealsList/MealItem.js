@@ -8,7 +8,7 @@ import {
   Text,
   View,
 } from "react-native";
-import MealInfos from "./MealInfos";
+import MealInfos from "../MealInfos";
 
 const MealItem = ({
   id,
