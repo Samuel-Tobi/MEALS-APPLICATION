@@ -18,7 +18,7 @@ const MealDescriptionScreen = ({ route, navigation }) => {
 
   const mealId = route.params.mealId;
 
-  const selectedMeal = MEALS.find((meal) => mealId === mealId);
+  const selectedMeal = MEALS.find((meal) => mealId === meal.id);
 
   // const mealIsFavorite = favoriteMealsContext.ids.includes(mealId);
   const mealIsFavorite = favoriteMealsIds.includes(mealId);
